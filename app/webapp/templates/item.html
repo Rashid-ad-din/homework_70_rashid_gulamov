@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Homework 52</title>
+</head>
+<body>
+<div class="container bg-light p-0" style="height: auto;">
+
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-danger" href="http://localhost:8000/">NullPointerException.NET</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-warning" aria-current="page"
+                           href="http://localhost:8000/">Домой</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-warning" href="http://localhost:8000/items/">Список дел</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% if item %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Описание</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Срок исполнения</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-5">
+                <a class="list-unstyled text-dark" href="#">
+                    {{item.description}}
+                </a>
+            </td>
+            <td class="col-3">{{ item.get_state_display }}</td>
+            {% if not item.date_to_do %}
+            <td class="col-2"> ---- / -- / --</td>
+            {% else %}
+            <td class="col-2">{{ item.date_to_do }}</td>
+            {% endif %}
+            <td class="col-2"><a class="btn btn-primary"
+                                 href="http://localhost:8000/items/item/delete/?pk={{ item.pk }}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary mt-2 ml-3 mb-3" href="http://localhost:8000/items/item/edit/?pk={{ item.pk }}">Редактировать заметку</a>
+    <br>
+    <a class="btn btn-primary mt-2 ml-3 mb-3" href="http://localhost:8000/items/item/add/">Добавить новую заметку</a>
+    {% else %}
+    <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
+    <a class="btn btn-primary mt-2 ml-3 mb-3" href="http://localhost:8000/items/item/add/">Добавить новую заметку</a>
+    {% endif %}
+</div>
+</body>
+</html>

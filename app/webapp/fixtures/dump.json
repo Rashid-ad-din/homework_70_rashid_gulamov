@@ -1,0 +1,56 @@
+[
+{
+  "model": "webapp.item",
+  "pk": 3,
+  "fields": {
+    "description": "Mercedes",
+    "state": "new",
+    "date_to_do": null
+  }
+},
+{
+  "model": "webapp.item",
+  "pk": 4,
+  "fields": {
+    "description": "Елка",
+    "state": "new",
+    "date_to_do": "2022-12-01"
+  }
+},
+{
+  "model": "webapp.item",
+  "pk": 5,
+  "fields": {
+    "description": "Сходить в парикмахерскую",
+    "state": "new",
+    "date_to_do": "2022-09-24"
+  }
+},
+{
+  "model": "webapp.item",
+  "pk": 6,
+  "fields": {
+    "description": "Выучить курс Python",
+    "state": "process",
+    "date_to_do": "2023-03-15"
+  }
+},
+{
+  "model": "webapp.item",
+  "pk": 7,
+  "fields": {
+    "description": "Контрольная работа",
+    "state": "done",
+    "date_to_do": "2022-09-04"
+  }
+},
+{
+  "model": "webapp.item",
+  "pk": 8,
+  "fields": {
+    "description": "Спортивные штаны Adidas",
+    "state": "new",
+    "date_to_do": "2022-12-15"
+  }
+}
+]

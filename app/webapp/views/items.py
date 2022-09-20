@@ -32,7 +32,7 @@ def add_view(request: WSGIRequest):
     item_data = {
         'description': request.POST.get('description'),
         'state': request.POST.get('state'),
-        'date_to_do': request.POST.get(date_to_do)
+        'date_to_do': date_to_do
     }
     item = Item.objects.create(**item_data)
     return redirect(f'/items/item/?pk={item.pk}')
@@ -43,9 +43,6 @@ def edit_view(request: WSGIRequest):
         pk = request.GET.get('pk')
         item = Item.objects.get(pk=pk)
         date = str(item.date_to_do)
-        print(item.date_to_do)
-        print(str(item.date_to_do))
-
         return render(request, 'edit_item.html', context={'item': item, 'date': date, 'status': Item.CHOICES})
     date_to_do = None
     if request.POST.get('date_to_do'):

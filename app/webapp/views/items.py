@@ -31,7 +31,6 @@ def add_view(request: WSGIRequest):
         date_to_do = request.POST.get('date_to_do')
     item_data = {
         'description': request.POST.get('description'),
-        'description_details': request.POST.get('description_details'),
         'state': request.POST.get('state'),
         'date_to_do': date_to_do
     }

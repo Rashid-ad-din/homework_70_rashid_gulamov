@@ -32,7 +32,6 @@
         <thead>
         <tr>
             <th scope="col">Описание</th>
-            <th scope="col">Подробное описание</th>
             <th scope="col">Статус</th>
             <th scope="col">Срок исполнения</th>
             <th scope="col"></th>
@@ -40,13 +39,12 @@
         </thead>
         <tbody>
         <tr>
-            <td class="col-3">
-                {{item.description}}
-            </td>
             <td class="col-5">
-                {{item.description_details}}
+                <a class="list-unstyled text-dark" href="#">
+                    {{item.description}}
+                </a>
             </td>
-            <td class="col-2">{{ item.get_state_display }}</td>
+            <td class="col-3">{{ item.get_state_display }}</td>
             {% if not item.date_to_do %}
             <td class="col-2"> ---- / -- / --</td>
             {% else %}

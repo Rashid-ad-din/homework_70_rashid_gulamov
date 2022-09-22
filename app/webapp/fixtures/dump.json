@@ -4,7 +4,6 @@
   "pk": 3,
   "fields": {
     "description": "Mercedes",
-    "description_details": null,
     "state": "new",
     "date_to_do": null
   }
@@ -14,7 +13,6 @@
   "pk": 4,
   "fields": {
     "description": "Елка",
-    "description_details": null,
     "state": "new",
     "date_to_do": "2022-12-01"
   }
@@ -24,7 +22,6 @@
   "pk": 5,
   "fields": {
     "description": "Сходить в парикмахерскую",
-    "description_details": null,
     "state": "new",
     "date_to_do": "2022-09-24"
   }
@@ -34,7 +31,6 @@
   "pk": 6,
   "fields": {
     "description": "Выучить курс Python",
-    "description_details": null,
     "state": "process",
     "date_to_do": "2023-03-15"
   }
@@ -44,7 +40,6 @@
   "pk": 7,
   "fields": {
     "description": "Контрольная работа",
-    "description_details": null,
     "state": "done",
     "date_to_do": "2022-09-04"
   }
@@ -54,19 +49,8 @@
   "pk": 8,
   "fields": {
     "description": "Спортивные штаны Adidas",
-    "description_details": null,
     "state": "new",
     "date_to_do": "2022-12-15"
-  }
-},
-{
-  "model": "webapp.item",
-  "pk": 38,
-  "fields": {
-    "description": "Благотворительный взнос",
-    "description_details": "Благотворительный взнос в Алматинский областной детский дом №1.",
-    "state": "new",
-    "date_to_do": "2022-12-16"
   }
 }
 ]

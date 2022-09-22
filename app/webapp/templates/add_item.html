@@ -30,11 +30,15 @@
         {% csrf_token %}
         <div class="input-group mt-5 mb-3 w-75">
             <span class="input-group-text" style="width: 100px;">Описание</span>
-            <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" name="description">
+        </div>
+        <div class="input-group mt-5 mb-3 w-75">
+            <span class="input-group-text text-wrap" style="width: 100px;">Подробное описание</span>
+            <textarea class="form-control" aria-label="With textarea" name="description_details"></textarea>
         </div>
         <div class="input-group mt-5 mb-3 w-75">
             <span class="input-group-text" id="inputGroup-sizing-default2" style="width: 100px;">Статус</span>
-
             <select name="state">
                 {% for state in status %}
                 <option value="{{ state.0 }}">{{ state.1 }}</option>

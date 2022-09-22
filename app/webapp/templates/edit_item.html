@@ -1,63 +1,47 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <title>Homework 52</title>
-</head>
-<body>
-<div class="container bg-light p-0" style="height: 500px;">
+{% extends 'base.html' %}
 
-    <div class="container-fluid d-flex pt-2 bg-dark">
-        <a class="navbar-brand text-danger ml-3" href="http://localhost:8000/">NullPointerException.NET</a>
-        <div>
-            <ul class="d-flex list-unstyled">
-                <li class="nav-item">
-                    <a class="nav-link active text-warning" aria-current="page" href="http://localhost:8000/">Домой</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  text-warning" href="http://localhost:8000/items/">Список дел</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+{% block title %} Редактирование записи {% endblock %}
 
-    <form action="http://localhost:8000/items/item/edit/?pk={{item.pk}}" method="POST" class="ml-4">
+{% block content %}
+    <form action="{% url 'edit_item' item.pk %}" method="POST" class="ml-4">
         {% csrf_token %}
         <div class="input-group mt-5 mb-3 w-75">
             <span class="input-group-text" style="width: 100px;"></span>
-            <textarea class="form-control" aria-label="With textarea" name="description"
-                      required>{{item.description}}</textarea>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" name="description" value="{{ item.description }}">
+        </div>
+        <div class="input-group mt-5 mb-3 w-75">
+            <span class="input-group-text" style="width: 100px;"></span>
+            {% if not item.description_details %}
+                <textarea class="form-control" aria-label="With textarea" name="description_details"
+                          required></textarea>
+            {% else %}
+                <textarea class="form-control" aria-label="With textarea" name="description_details"
+                          required>{{ item.description_details }}</textarea>
+            {% endif %}
+
         </div>
         <div class="input-group mt-5 mb-3 w-75">
             <span class="input-group-text" id="inputGroup-sizing-default2" style="width: 100px;">Статус</span>
 
             <select name="state">
-                <option selected value="{{item.state}}">{{item.get_state_display}}</option>
+                <option selected value="{{ item.state }}">{{ item.get_state_display }}</option>
                 {% for state in status %}
-                <option value="{{ state.0 }}">{{ state.1 }}</option>
+                    <option value="{{ state.0 }}">{{ state.1 }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="input-group mt-5 mb-3 w-75">
             <span class="input-group-text" id="inputGroup-sizing-default3" style="width: 100px;">Дата</span>
             {% if not item.date_to_do %}
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default" name="date_to_do" placeholder="ГГГГ-ММ-ДД">
+                <input type="date" class="form-control" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default" name="date_to_do" placeholder="ГГГГ-ММ-ДД">
             {% else %}
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default" name="date_to_do" placeholder="ГГГГ-ММ-ДД"
-                   value="{{date}}">
+                <input type="date" class="form-control" aria-label="Sizing example input"
+                       aria-describedby="inputGroup-sizing-default" name="date_to_do" placeholder="ГГГГ-ММ-ДД"
+                       value="{{ date }}">
             {% endif %}
-
         </div>
-        <input type="submit" value="Принять изменения" class="btn btn-primary">
+        <input type="submit" value="Принять изменения" class="btn btn-primary mb-3">
     </form>
-
-</div>
-</body>
-</html>
+{% endblock %}

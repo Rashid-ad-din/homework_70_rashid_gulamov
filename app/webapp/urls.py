@@ -5,9 +5,9 @@ from webapp.views.items import item_view, add_view, edit_view, delete_view, item
 
 urlpatterns = [
     path('', home_view, name='home'),
-    path('items/', items_view, name='items'),
-    path('items/item/', item_view, name='item'),
-    path('items/item/add/', add_view, name='add'),
-    path('items/item/edit/', edit_view, name='edit'),
-    path('items/item/delete/', delete_view, name='delete')
+    path('items/', items_view, name='show_items'),
+    path('items/item/<pk>', item_view, name='show_item'),
+    path('items/item/add/', add_view, name='add_item'),
+    path('items/item/edit/<pk>', edit_view, name='edit_item'),
+    path('items/item/delete/<pk>', delete_view, name='delete_item')
 ]

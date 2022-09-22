@@ -1,68 +1,54 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <title>Homework 52</title>
-</head>
-<body>
-<div class="container bg-light p-0" style="height: auto;">
+{% extends 'base.html' %}
 
+{% block title %} Запись №{{ item.pk }} {% endblock %}
 
-    <div class="container-fluid d-flex pt-2 bg-dark">
-        <a class="navbar-brand text-danger ml-3" href="http://localhost:8000/">NullPointerException.NET</a>
-        <div>
-            <ul class="d-flex list-unstyled">
-                <li class="nav-item">
-                    <a class="nav-link active text-warning" aria-current="page" href="http://localhost:8000/">Домой</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  text-warning" href="http://localhost:8000/items/">Список дел</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
+{% block content %}
     {% if item %}
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Описание</th>
-            <th scope="col">Статус</th>
-            <th scope="col">Срок исполнения</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td class="col-5">
-                <a class="list-unstyled text-dark" href="#">
-                    {{item.description}}
-                </a>
-            </td>
-            <td class="col-3">{{ item.get_state_display }}</td>
-            {% if not item.date_to_do %}
-            <td class="col-2"> ---- / -- / --</td>
-            {% else %}
-            <td class="col-2">{{ item.date_to_do }}</td>
-            {% endif %}
-            <td class="col-2"><a class="btn btn-primary"
-                                 href="http://localhost:8000/items/item/delete/?pk={{ item.pk }}">Delete</a></td>
-        </tr>
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Описание</th>
+                <th scope="col">Подробное описание</th>
+                <th scope="col">Статус</th>
+                <th scope="col">Срок исполнения</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col-3 text-break">
+                    {{ item.description }}
+                </td>
 
-    <a class="btn btn-primary mt-2 ml-3 mb-3" href="http://localhost:8000/items/item/edit/?pk={{ item.pk }}">Редактировать заметку</a>
-    <br>
-    <a class="btn btn-primary mt-2 ml-3 mb-3" href="http://localhost:8000/items/item/add/">Добавить новую заметку</a>
+                {% if not item.description_details %}
+                    <td class="col-5 text-break">
+                        ---
+                    </td>
+                {% else %}
+                    <td class="col-5 text-break">
+                        {{ item.description_details | linebreaks }}
+                    </td>
+                {% endif %}
+
+                <td class="col-2">{{ item.get_state_display }}</td>
+                {% if not item.date_to_do %}
+                    <td class="col-2"> ---- / -- / --</td>
+                {% else %}
+                    <td class="col-2">{{ item.date_to_do }}</td>
+                {% endif %}
+                <td class="col-2"><a class="btn btn-primary"
+                                     href="{% url 'delete_item' item.pk %}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'edit_item' item.pk %}">Редактировать заметку</a>
+        <br>
     {% else %}
-    <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
-    <a class="btn btn-primary mt-2 ml-3 mb-3" href="http://localhost:8000/items/item/add/">Добавить новую заметку</a>
+        <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
     {% endif %}
-</div>
-</body>
-</html>
+{% endblock %}
+
+{% block bottom_href %}
+    <a class="btn btn-primary ml-3 mb-3" href="{% url 'add_item' %}">Добавить новую заметку</a>
+{% endblock %}

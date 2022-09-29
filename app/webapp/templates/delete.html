@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление записи{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'show_item' item.pk %}">View</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Are you sure want to delete article "{{ item }}"?</h1>
+    <form method="POST" action="{% url "confirm_delete_item" item.pk %}" class="text-center">
+        {% csrf_token %}
+        <p><input type="submit" value="Да"></p>
+        <p><a href="{% url "show_item" item.pk %}">Нет</a></p>
+    </form>
+{% endblock %}

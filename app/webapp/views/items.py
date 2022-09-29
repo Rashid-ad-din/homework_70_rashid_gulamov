@@ -7,7 +7,7 @@ from webapp.models import Item
 
 
 def items_view(request: WSGIRequest):
-    items = Item.objects.all()
+    items = Item.objects.exclude(is_deleted=True)
     context = {
         'items': items,
     }
@@ -53,6 +53,11 @@ def edit_view(request: WSGIRequest, pk):
 
 
 def delete_view(request: WSGIRequest, pk):
+    item = get_object_or_404(Item, pk=pk)
+    return render(request, 'delete.html', context={'item': item})
+
+
+def confirm_delete_view(request: WSGIRequest, pk):
     item = get_object_or_404(Item, pk=pk)
     item.delete()
     return redirect('show_items')

@@ -33,12 +33,11 @@
                     {% else %}
                         <td class="col-2">{{ item.date_to_do }}</td>
                     {% endif %}
-                    {#                    <td class="col-2 text-center"><a class="btn btn-primary" style="width: 100px;"#}
-                    {#                                                     href="{% url 'delete_item' item.pk %}">Удалить</a></td>#}
-
                 </tr>
             {% endfor %}
-            <tr><td class="col-2"><input class="btn btn-danger ml-1 mt-3" type="submit" value="Удалить выбранные"></td></tr>
+            <tr>
+                <td class="col-2"><input class="btn btn-danger ml-1 mt-3" type="submit" value="Удалить выбранные"></td>
+            </tr>
             </tbody>
         </table>
     {% else %}

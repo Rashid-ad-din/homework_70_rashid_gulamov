@@ -47,10 +47,10 @@ def edit_view(request: WSGIRequest, pk):
     if not form.is_valid():
         return render(request, 'edit_item.html',
                       context={'item': item, 'form': form})
-    item.description = request.POST.get('description')
-    item.description_details = request.POST.get('description_details')
-    item.state = request.POST.get('state')
-    item.date_to_do = request.POST.get('date_to_do')
+    item.description = form.cleaned_data['description']
+    item.description_details = form.cleaned_data['description_details']
+    item.state = form.cleaned_data['state']
+    item.date_to_do = form.cleaned_data['date_to_do']
     item.save()
     return redirect('show_item', pk=item.pk)
 

@@ -20,11 +20,21 @@ def add_view(request: WSGIRequest):
 
 
 def items_view(request: WSGIRequest):
-    items = Item.objects.exclude(is_deleted=True)
-    context = {
-        'items': items,
-    }
-    return render(request, 'items.html', context)
+    if not request.method == 'POST':
+        items = Item.objects.exclude(is_deleted=True)
+        context = {
+            'items': items,
+        }
+        return render(request, 'items.html', context)
+    else:
+        items_to_delete = request.POST.getlist('item')
+        print(items_to_delete)
+        Item.objects.filter(pk__in=items_to_delete).delete()
+        items = Item.objects.exclude(is_deleted=True)
+        context = {
+            'items': items,
+        }
+        return render(request, 'items.html', context)
 
 
 def item_view(request: WSGIRequest, pk):

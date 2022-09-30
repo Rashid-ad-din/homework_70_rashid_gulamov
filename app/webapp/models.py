@@ -15,7 +15,7 @@ class Item(models.Model):
     state = models.CharField(max_length=50, null=False, blank=False, choices=CHOICES, default=new,
                              verbose_name='Статус')
     is_deleted = models.BooleanField(verbose_name='Удалено', default=False, null=False)
-    date_to_do = models.DateField(null=True, blank=False, verbose_name='Дата выполнения')
+    date_to_do = models.DateField(null=True, blank=True, verbose_name='Дата выполнения')
 
     def __str__(self):
         return f'Описание: {self.description}, Статус: {self.get_state_display()}, Дата выполнения: {self.date_to_do}'

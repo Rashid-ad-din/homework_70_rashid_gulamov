@@ -6,6 +6,7 @@
     "description": "Mercedes",
     "description_details": "2022",
     "state": "new",
+    "is_deleted": false,
     "date_to_do": null
   }
 },
@@ -14,9 +15,10 @@
   "pk": 4,
   "fields": {
     "description": "Елка",
-    "description_details": null,
+    "description_details": "",
     "state": "new",
-    "date_to_do": "2022-12-01"
+    "is_deleted": true,
+    "date_to_do": "2022-12-13"
   }
 },
 {
@@ -26,6 +28,7 @@
     "description": "Сходить в парикмахерскую",
     "description_details": null,
     "state": "new",
+    "is_deleted": false,
     "date_to_do": "2022-09-24"
   }
 },
@@ -36,6 +39,7 @@
     "description": "Выучить курс Python",
     "description_details": null,
     "state": "process",
+    "is_deleted": false,
     "date_to_do": "2023-03-15"
   }
 },
@@ -46,6 +50,7 @@
     "description": "Контрольная работа",
     "description_details": null,
     "state": "done",
+    "is_deleted": false,
     "date_to_do": "2022-09-04"
   }
 },
@@ -56,6 +61,7 @@
     "description": "Спортивные штаны Adidas",
     "description_details": null,
     "state": "new",
+    "is_deleted": false,
     "date_to_do": "2022-12-15"
   }
 },
@@ -66,6 +72,7 @@
     "description": "Благотворительный взнос",
     "description_details": "Благотворительный взнос в Алматинский областной детский дом №1.",
     "state": "new",
+    "is_deleted": false,
     "date_to_do": "2022-12-16"
   }
 },
@@ -76,6 +83,7 @@
     "description": "Подарок маме",
     "description_details": "Купить шарф или еще что-нибудь. Надо подумать. Цветы обязательно.",
     "state": "new",
+    "is_deleted": false,
     "date_to_do": "2022-09-30"
   }
 },
@@ -86,6 +94,7 @@
     "description": "Подарок папе",
     "description_details": "Купить кожаное изделие. Надо подумать.",
     "state": "new",
+    "is_deleted": false,
     "date_to_do": "2022-12-01"
   }
 },
@@ -96,6 +105,7 @@
     "description": "Подарок сестре",
     "description_details": "Купить цветы + фен Dyson",
     "state": "new",
+    "is_deleted": false,
     "date_to_do": "2022-12-31"
   }
 },
@@ -106,6 +116,7 @@
     "description": "Подарок племянницам",
     "description_details": "Съездить в Marvell\r\n\r\nи посмотреть\r\nинтересные\r\nи\r\n\r\nполезные вещи.",
     "state": "new",
+    "is_deleted": false,
     "date_to_do": "2022-12-20"
   }
 },
@@ -116,7 +127,19 @@
     "description": "Bugatti",
     "description_details": "2024",
     "state": "new",
+    "is_deleted": false,
     "date_to_do": null
+  }
+},
+{
+  "model": "webapp.item",
+  "pk": 57,
+  "fields": {
+    "description": "Shoes",
+    "description_details": "Осенняя обувь",
+    "state": "done",
+    "is_deleted": true,
+    "date_to_do": "2022-09-20"
   }
 },
 {

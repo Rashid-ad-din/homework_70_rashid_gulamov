@@ -3,7 +3,20 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
+from webapp.forms import ItemForm
 from webapp.models import Item
+
+
+def add_view(request: WSGIRequest):
+    form = ItemForm
+    if request.method == 'GET':
+        return render(request, 'add_item.html', context={'form': form})
+    form = ItemForm(request.POST)
+    if not form.is_valid():
+        return render(request, 'add_item.html', context={'form': form})
+    item = Item.objects.create(**form.cleaned_data)
+    url = reverse('show_item', kwargs={'pk': item.pk})
+    return HttpResponseRedirect(url)
 
 
 def items_view(request: WSGIRequest):
@@ -19,35 +32,25 @@ def item_view(request: WSGIRequest, pk):
     return render(request, 'item.html', context={'item': item, 'status': Item.CHOICES})
 
 
-def add_view(request: WSGIRequest):
-    if request.method == 'GET':
-        return render(request, 'add_item.html', context={'status': Item.CHOICES})
-    date_to_do = None
-    if request.POST.get('date_to_do'):
-        date_to_do = request.POST.get('date_to_do')
-    item_data = {
-        'description': request.POST.get('description'),
-        'description_details': request.POST.get('description_details'),
-        'state': request.POST.get('state'),
-        'date_to_do': date_to_do
-    }
-    item = Item.objects.create(**item_data)
-    url = reverse('show_item', kwargs={'pk': item.pk})
-    return HttpResponseRedirect(url)
-
-
 def edit_view(request: WSGIRequest, pk):
     item = get_object_or_404(Item, pk=pk)
+    form = ItemForm(initial={
+        'description': item.description,
+        'description_details': item.description_details,
+        'state': item.state,
+        'date_to_do': item.date_to_do
+    })
     if request.method == 'GET':
-        date = str(item.date_to_do)
-        return render(request, 'edit_item.html', context={'item': item, 'date': date, 'status': Item.CHOICES})
-    date_to_do = None
-    if request.POST.get('date_to_do'):
-        date_to_do = request.POST.get('date_to_do')
+        return render(request, 'edit_item.html',
+                      context={'item': item, 'form': form})
+    form = ItemForm(request.POST)
+    if not form.is_valid():
+        return render(request, 'edit_item.html',
+                      context={'item': item, 'form': form})
     item.description = request.POST.get('description')
     item.description_details = request.POST.get('description_details')
     item.state = request.POST.get('state')
-    item.date_to_do = date_to_do
+    item.date_to_do = request.POST.get('date_to_do')
     item.save()
     return redirect('show_item', pk=item.pk)
 

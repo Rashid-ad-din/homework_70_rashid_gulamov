@@ -6,8 +6,8 @@ class Task(models.Model):
     description = models.TextField(verbose_name="Полное описание", null=True, blank=True, max_length=2000)
     state = models.ManyToManyField(
         to='webapp.State',
-        related_name='tasks',
-        blank=False
+        related_name='states',
+        blank=False,
     )
     type = models.ManyToManyField(
         to='webapp.Type',
@@ -19,6 +19,12 @@ class Task(models.Model):
 
     def __str__(self):
         return f'Заголовок: {self.summary}, Статус: {self.state}, Тип: {self.type}, Дата обновления: {self.updated_at}'
+
+    def get_state(self, obj):
+        return "\n".join([s.name for s in obj.state.all()])
+
+    def get_type(self, obj):
+        return "\n".join([t.name for t in obj.type.all()])
 
     class Meta:
         verbose_name = 'Задача'

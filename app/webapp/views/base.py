@@ -1,6 +1,7 @@
-from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render
+from django.views.generic import View
 
 
-def home_view(request: WSGIRequest):
-    return render(request, 'home.html')
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'base.html')

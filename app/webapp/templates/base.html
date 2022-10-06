@@ -7,19 +7,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>{% block title %} Домашнее задание №53 {% endblock %}</title>
+    <title>{% block title %} Домашнее задание №57 {% endblock %}</title>
 </head>
 <body>
 
 <div class="container-fluid d-flex bg-dark fixed-top container">
-    <a class="navbar-brand text-danger ml-3" href="{% url 'home' %}">NullPointerException.NET</a>
+    <a class="navbar-brand text-danger ml-3 mt-2" href="{% url 'show_tasks' %}">NullPointerException.NET</a>
     <div>
         <ul class="d-flex list-unstyled">
-            <li class="nav-item">
-                <a class="nav-link active text-warning" aria-current="page" href="{% url 'home' %}">Домой</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-warning" href="{% url 'show_items' %}">Список дел</a>
+            <li class="nav-item mt-2">
+                 <a class="nav-link text-warning" href="{% url 'add_item' %}">Добавить новую заметку</a>
             </li>
             {% block menu %}{% endblock %}
         </ul>
@@ -27,7 +24,7 @@
 </div>
 
 <div class="container bg-light p-0" style="height: auto;">
-    <div style="padding-top: 60px;">
+    <div style="padding-top: 15px;">
         {% block content %}{% endblock %}
         {% block bottom_href %}{% endblock %}
     </div>

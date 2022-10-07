@@ -20,7 +20,8 @@ class Task(models.Model):
     updated_at = models.DateTimeField(verbose_name='Дата удаления', auto_now=True)
 
     def __str__(self):
-        return f'Заголовок: {self.summary}, Статус: {self.state.first()}, Тип: {self.type.first()}, Дата обновления: {self.updated_at}'
+        return f'Заголовок: {self.summary}, Статус: {self.state.first()}, Тип: {self.type.first()}, Дата обновления:' \
+               f' {self.updated_at}'
 
     class Meta:
         verbose_name = 'Задача'

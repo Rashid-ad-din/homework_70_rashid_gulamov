@@ -1,14 +1,6 @@
 from django.contrib import admin
 
-from webapp.models import Item, Task, Type, State
-
-
-class ItemAdmin(admin.ModelAdmin):
-    list_display = ('id', 'state', 'description', 'date_to_do')
-    list_filter = ('id', 'state', 'description', 'date_to_do')
-    search_fields = ('state', 'description', 'date_to_do')
-    fields = ('id', 'state', 'description', 'description_details', 'date_to_do')
-    readonly_fields = ('id', 'date_to_do')
+from webapp.models import Task, Type, State
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -41,7 +33,6 @@ class TypeAdmin(admin.ModelAdmin):
     readonly_fields = ('id',)
 
 
-admin.site.register(Item, ItemAdmin)
 admin.site.register(Task, TaskAdmin)
 admin.site.register(State, StateAdmin)
 admin.site.register(Type, TypeAdmin)

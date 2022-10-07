@@ -1,12 +1,11 @@
 from django import forms
-from django.forms import Textarea, TextInput, Select, widgets, ModelMultipleChoiceField
-from django.forms.widgets import ChoiceWidget, CheckboxSelectMultiple, SelectMultiple
+from django.forms import Textarea, TextInput
+from django.forms.widgets import SelectMultiple
 
-from webapp.models import Task, Type, State
+from webapp.models import Task
 
 
 class TaskForm(forms.ModelForm):
-
     class Meta:
         model = Task
         fields = ('summary', 'description', 'state', 'type')

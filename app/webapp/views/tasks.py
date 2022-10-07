@@ -1,7 +1,4 @@
-from django.core.handlers.wsgi import WSGIRequest
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
 from django.views.generic import TemplateView, RedirectView
 
 from webapp.forms import TaskForm

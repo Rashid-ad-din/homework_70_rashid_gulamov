@@ -1,7 +1,5 @@
 from django.urls import path
 
-from webapp.views.base import HomeView
-from webapp.views.items import item_view, add_view, edit_view, delete_view, items_view, confirm_delete_view
 from webapp.views.tasks import TasksView, TaskView, AddTaskView, UpdateView, DeleteView, ConfirmDeleteView
 
 urlpatterns = [

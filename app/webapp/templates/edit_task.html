@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Редактирование записи {% endblock %}
+
+{% block content %}
+
+    <h3 class="pl-3 pb-2">Редактирование записи</h3>
+
+    <form action="{% url 'edit_task' task.pk %}" method="POST" class="ml-4">
+        {% include 'partial/partial_add_edit.html' with button_text1='Принять изменения' %}
+        <p>
+            <a href="{% url 'show_task' task.pk %}" class="btn btn-primary mb-3">Назад</a>
+        </p>
+    </form>
+
+{% endblock %}

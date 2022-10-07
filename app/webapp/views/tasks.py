@@ -4,7 +4,25 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView
 
+from webapp.forms import TaskForm
 from webapp.models import Task
+
+
+class AddTaskView(TemplateView):
+    template_name = 'add_task.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        context['form'] = TaskForm()
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        form = TaskForm(request.POST)
+        task = request.POST.get('state')
+        if form.is_valid():
+            task = form.save()
+            return redirect('show_task', pk=task.pk)
+        return render(request, 'add_task.html', context={'form': form})
 
 
 class TasksView(TemplateView):

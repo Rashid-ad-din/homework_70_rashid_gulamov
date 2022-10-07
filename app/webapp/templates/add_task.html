@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %} Добавить запись {% endblock %}
+{% block title %} Добавить задачу {% endblock %}
 
 {% block content %}
+
+    <h3 class="pl-3 pb-2">Добавить задачу</h3>
+
     <form action="{% url 'add_task' %}" method="POST" class="ml-4">
         {% include 'partial/partial_add_edit.html' with button_text1='Добавить' %}
     </form>

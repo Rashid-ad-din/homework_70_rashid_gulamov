@@ -7,11 +7,13 @@ class Task(models.Model):
     state = models.ManyToManyField(
         to='webapp.State',
         related_name='states',
+        verbose_name='Статус',
         blank=False,
     )
     type = models.ManyToManyField(
         to='webapp.Type',
         related_name='types',
+        verbose_name='Тип',
         blank=False
     )
     created_at = models.DateTimeField(verbose_name='Дата изменения', auto_now_add=True)

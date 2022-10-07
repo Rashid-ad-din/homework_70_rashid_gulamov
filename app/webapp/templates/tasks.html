@@ -24,7 +24,7 @@
                 <tr>
                     <td class="col-4 text-break">
                         <input type="checkbox" value="" name="task">
-                        <a class="list-unstyled text-dark" href="{% url 'show_item' task.pk %}">
+                        <a class="list-unstyled text-dark" href="{% url 'show_task' task.pk %}">
                             {{ task.summary }}
                         </a>
                     </td>
@@ -34,7 +34,10 @@
                 </tr>
             {% endfor %}
             <tr>
-                <td class="col-2"><input class="btn btn-danger ml-1 mt-3" type="submit" value="Удалить выбранные"></td>
+                <td class="col-2">
+                    <input class="btn btn-danger ml-1 mt-3" type="submit" value="Удалить выбранные">
+                    <a class="btn btn-primary ml-1 mt-3 mb-5" href="#">Добавить новую задачу</a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -42,7 +45,4 @@
         <p class="mt-5 ml-3 fw-bold">Список задач пуст</p>
     {% endif %}
 </form>
-{% endblock %}
-{% block bottom_href %}
-    <a class="btn btn-primary ml-3 mb-3" href="#">Добавить новую задачу</a>
 {% endblock %}

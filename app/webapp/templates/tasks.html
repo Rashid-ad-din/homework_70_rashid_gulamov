@@ -23,13 +23,13 @@
             {% for task in tasks %}
                 <tr>
                     <td class="col-4 text-break">
-                        <input type="checkbox" value="" name="task">
+                        <input style="width: 18px; height: 18px;" type="checkbox" value="{{ task.pk }}" name="task">
                         <a class="list-unstyled text-dark" href="{% url 'show_task' task.pk %}">
                             {{ task.summary }}
                         </a>
                     </td>
-                    <td class="col-3">{{ task.state.first.name }}</td>
-                    <td class="col-3">{{ task.type.first.name }}</td>
+                    <td class="col-3">{% for state in task.state.all %}{{ state.name }}<br>{% endfor %}</td>
+                    <td class="col-3">{% for type in task.type.all %}{{ type.name }}<br>{% endfor %}</td>
                     <td class="col-2">{{ task.updated_at }}</td>
                 </tr>
             {% endfor %}

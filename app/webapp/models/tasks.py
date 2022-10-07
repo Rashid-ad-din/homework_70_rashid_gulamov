@@ -20,13 +20,7 @@ class Task(models.Model):
     updated_at = models.DateTimeField(verbose_name='Дата удаления', auto_now=True)
 
     def __str__(self):
-        return f'Заголовок: {self.summary}, Статус: {self.state}, Тип: {self.type}, Дата обновления: {self.updated_at}'
-
-    def get_state(self, obj):
-        return "\n".join([s.name for s in obj.state.all()])
-
-    def get_type(self, obj):
-        return "\n".join([t.name for t in obj.type.all()])
+        return f'Заголовок: {self.summary}, Статус: {self.state.first()}, Тип: {self.type.first()}, Дата обновления: {self.updated_at}'
 
     class Meta:
         verbose_name = 'Задача'

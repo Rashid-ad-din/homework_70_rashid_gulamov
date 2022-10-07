@@ -1,53 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %} Запись №{{ item.pk }} {% endblock %}
+{% block title %} Задача №{{ task.pk }} {% endblock %}
 
 {% block content %}
-    {% if item %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Описание</th>
-                <th scope="col">Подробное описание</th>
-                <th scope="col">Статус</th>
-                <th scope="col">Срок исполнения</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td class="col-3 text-break">
-                    {{ item.description }}
-                </td>
+    {% if task %}
 
-                {% if not item.description_details %}
-                    <td class="col-5 text-break">
-                        ---
-                    </td>
-                {% else %}
-                    <td class="col-5 text-break">
-                        {{ item.description_details | linebreaks }}
-                    </td>
-                {% endif %}
+        <h3 class="pl-3 pb-2">Удаление задачи</h3>
 
-                <td class="col-2">{{ item.get_state_display }}</td>
-                {% if not item.date_to_do %}
-                    <td class="col-2"> ---- / -- / --</td>
-                {% else %}
-                    <td class="col-2">{{ item.date_to_do }}</td>
-                {% endif %}
-                <td class="col-2"><a class="btn btn-primary"
-                                     href="{% url 'delete_item' item.pk %}">Удалить</a></td>
-            </tr>
-            </tbody>
-        </table>
-
-        <h1 class="text-center" style="color: red; font-size: 21px;">Вы точно хотите удалить заметку? <br>"{{ item }}"?
+        <h1 class="text-center" style="color: red; font-size: 21px;">Вы точно хотите удалить задачу? <br>"{{ task }}"?
         </h1>
-        <form method="POST" action="{% url "confirm_delete_item" item.pk %}" class="text-center">
+        <form method="POST" action="{% url "confirm_delete_task" task.pk %}" class="text-center">
             {% csrf_token %}
             <input type="submit" value="Да" class="btn btn-danger mt-2 ml-3 mb-3">
-            <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url "show_item" item.pk %}">нет</a>
+            <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url "show_task" task.pk %}">нет</a>
         </form>
 
     {% else %}

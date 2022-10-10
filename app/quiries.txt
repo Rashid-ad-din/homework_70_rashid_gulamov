@@ -1,0 +1,28 @@
+# class TasksView(TemplateView):
+#     template_name = 'tasks.html'
+
+# Закрытые задачи за последний месяц от текущей даты (вхождение определяйте по дате последнего обновления).
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        last_date = Task.objects.order_by('-updated_at').first().updated_at
+        date_before = last_date - datetime.timedelta(days=30)
+        tasks = Task.objects.filter(updated_at__gt=date_before, state__name='Сделано')
+        context['tasks'] = tasks
+        return context
+
+# Задачи, имеющие один из указанных статусов И один из указанных типов (в запросе укажите 2 любых названия типа и 2
+# названия статуса, которые есть в вашей базе).
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = Task.objects.filter(state__name__in=('Сделано', 'В процессе'),
+                                               type__name__in=('Баг', 'Улучшение'))
+        return context
+
+
+# Задачи, в названии которых содержится слово "bug" в любом регистре или относящиеся к типу "Баг", имеющие НЕ закрытый
+# статус.
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tasks'] = (Task.objects.filter(type__name='Баг').exclude(state__name='Сделано') | Task.objects.filter(
+            summary__icontains='bug').exclude(state__name='Сделано')).distinct()
+        return context

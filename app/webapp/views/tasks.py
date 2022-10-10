@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, RedirectView
 
@@ -27,7 +29,8 @@ class TasksView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = Task.objects.all()
+        context['tasks'] = Task.objects.filter(state__name__in=('Сделано', 'В процессе'),
+                                               type__name__in=('Баг', 'Улучшение'))
         return context
 
     def post(self, request, *args, **kwargs):
@@ -67,7 +70,7 @@ class UpdateView(TemplateView):
         if form.is_valid():
             task = form.save()
             return redirect('show_task', pk=task.pk)
-        return render(request, 'edit_task.html', context={'form': form})
+        return render(request, 'edit_task.html', context={'form': form, 'task': task})
 
 
 class DeleteView(TemplateView):

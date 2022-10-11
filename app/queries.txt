@@ -26,3 +26,9 @@
         context['tasks'] = (Task.objects.filter(type__name='Баг').exclude(state__name='Сделано') | Task.objects.filter(
             summary__icontains='bug').exclude(state__name='Сделано')).distinct()
         return context
+
+# Для всех задач только следующие поля: id, название задачи, название типа и название статуса.
+Task.objects.all().values('id', 'summary', 'state', 'type')
+
+# Задачи, где краткое описание совпадает с полным.
+context['tasks'] = Task.objects.filter(summary__exact=F('description'))

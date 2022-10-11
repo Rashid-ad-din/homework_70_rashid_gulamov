@@ -1,4 +1,5 @@
 import datetime
+from django.db.models import Q, F
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, RedirectView
@@ -29,8 +30,7 @@ class TasksView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = Task.objects.filter(state__name__in=('Сделано', 'В процессе'),
-                                               type__name__in=('Баг', 'Улучшение'))
+        context['tasks'] = Task.objects.filter(summary__exact=F('description'))
         return context
 
     def post(self, request, *args, **kwargs):

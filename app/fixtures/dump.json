@@ -560,6 +560,22 @@
   }
 },
 {
+  "model": "webapp.task",
+  "pk": 55,
+  "fields": {
+    "summary": "Домашнее задание",
+    "description": "Домашнее задание",
+    "created_at": "2022-10-11T11:52:05.993Z",
+    "updated_at": "2022-10-11T11:52:05.993Z",
+    "state": [
+      1
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
   "model": "webapp.state",
   "pk": 1,
   "fields": {

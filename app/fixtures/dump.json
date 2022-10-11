@@ -6,7 +6,7 @@
     "summary": "Блокировка пользователей",
     "description": "",
     "created_at": "2022-10-07T09:41:48.254Z",
-    "updated_at": "2022-10-07T09:42:38.807Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
     "state": [
       3
     ],
@@ -22,9 +22,9 @@
     "summary": "Обновление джобы",
     "description": "",
     "created_at": "2022-10-07T09:42:05.097Z",
-    "updated_at": "2022-10-07T09:42:05.097Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
     "state": [
-      2
+      3
     ],
     "type": [
       1
@@ -38,7 +38,7 @@
     "summary": "Отправка уведомлений",
     "description": "",
     "created_at": "2022-10-07T09:42:27.660Z",
-    "updated_at": "2022-10-07T09:42:27.660Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
     "state": [
       3
     ],
@@ -51,10 +51,10 @@
   "model": "webapp.task",
   "pk": 20,
   "fields": {
-    "summary": "Интеграция с гос. сервисами",
+    "summary": "Интеграция госсервисов",
     "description": "",
     "created_at": "2022-10-07T09:42:51.402Z",
-    "updated_at": "2022-10-07T09:42:51.402Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
     "state": [
       2
     ],
@@ -65,17 +65,497 @@
 },
 {
   "model": "webapp.task",
-  "pk": 21,
+  "pk": 24,
   "fields": {
-    "summary": "Авторизация пользователей",
+    "summary": "Обновление джобы",
     "description": "",
-    "created_at": "2022-10-07T09:43:37.401Z",
-    "updated_at": "2022-10-07T09:43:37.401Z",
+    "created_at": "2022-10-10T15:15:21.089Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      1
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 25,
+  "fields": {
+    "summary": "Домашнее задание",
+    "description": "",
+    "created_at": "2022-10-10T15:15:26.807Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      2
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 26,
+  "fields": {
+    "summary": "Интеграция с гос. сервисами",
+    "description": "",
+    "created_at": "2022-10-10T15:15:32.919Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      1
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 27,
+  "fields": {
+    "summary": "Отправка уведомлений",
+    "description": "",
+    "created_at": "2022-10-10T15:15:51.190Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      1
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 28,
+  "fields": {
+    "summary": "Интеграция с гос. сервисами",
+    "description": "Номер 7",
+    "created_at": "2022-10-10T15:16:06.682Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
     "state": [
       2
     ],
     "type": [
       2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 29,
+  "fields": {
+    "summary": "Блокировка пользователей",
+    "description": "Номер 55",
+    "created_at": "2022-10-10T15:16:16.947Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      2
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 30,
+  "fields": {
+    "summary": "Тест на нагрузку",
+    "description": "",
+    "created_at": "2022-10-10T15:16:28.466Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      3
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 31,
+  "fields": {
+    "summary": "Установка таймаута",
+    "description": "10000000 мс",
+    "created_at": "2022-10-10T15:17:00.101Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      3
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 32,
+  "fields": {
+    "summary": "Верстка UI",
+    "description": "Модернизация",
+    "created_at": "2022-10-10T15:17:36.217Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      3
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 33,
+  "fields": {
+    "summary": "Повторение - мать учения",
+    "description": "Повторение",
+    "created_at": "2022-10-10T16:10:23.951Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      1
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 34,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "По запросу 1",
+    "created_at": "2022-10-10T17:23:31.537Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      1
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 35,
+  "fields": {
+    "summary": "Bug fix",
+    "description": "Проверка bug",
+    "created_at": "2022-10-10T17:37:53.481Z",
+    "updated_at": "2022-09-05T17:37:53.481Z",
+    "state": [
+      3
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 36,
+  "fields": {
+    "summary": "Домашнее задание",
+    "description": "",
+    "created_at": "2022-10-10T18:07:17.041Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      1
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 37,
+  "fields": {
+    "summary": "Обновление джобы",
+    "description": "",
+    "created_at": "2022-10-10T18:07:30.897Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      1
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 38,
+  "fields": {
+    "summary": "Отправка уведомлений",
+    "description": "",
+    "created_at": "2022-10-10T18:07:35.782Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      1
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 39,
+  "fields": {
+    "summary": "Блокировка пользователей",
+    "description": "",
+    "created_at": "2022-10-10T18:07:40.889Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      2
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 40,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "",
+    "created_at": "2022-10-10T18:07:53.665Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      2
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 41,
+  "fields": {
+    "summary": "Bug fix",
+    "description": "Newest",
+    "created_at": "2022-10-10T18:08:10.139Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      2
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 42,
+  "fields": {
+    "summary": "Интеграция госсервисов",
+    "description": "",
+    "created_at": "2022-10-10T18:08:20.359Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      3
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 43,
+  "fields": {
+    "summary": "Домашнее задание",
+    "description": "",
+    "created_at": "2022-10-10T18:08:25.687Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      3
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 44,
+  "fields": {
+    "summary": "Блокировка пользователей",
+    "description": "",
+    "created_at": "2022-10-10T18:08:33.562Z",
+    "updated_at": "2022-09-25T18:10:55.772Z",
+    "state": [
+      3
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 45,
+  "fields": {
+    "summary": "Домашнее задание",
+    "description": "",
+    "created_at": "2022-10-10T18:14:09.372Z",
+    "updated_at": "2022-10-10T18:14:09.372Z",
+    "state": [
+      1
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 46,
+  "fields": {
+    "summary": "Обновление джобы",
+    "description": "",
+    "created_at": "2022-10-10T18:14:16.987Z",
+    "updated_at": "2022-10-10T18:14:16.987Z",
+    "state": [
+      1
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 47,
+  "fields": {
+    "summary": "Отправка уведомлений",
+    "description": "",
+    "created_at": "2022-10-10T18:14:22.091Z",
+    "updated_at": "2022-10-10T18:14:22.092Z",
+    "state": [
+      1
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 48,
+  "fields": {
+    "summary": "Блокировка пользователей",
+    "description": "",
+    "created_at": "2022-10-10T18:14:27.703Z",
+    "updated_at": "2022-10-10T18:14:27.703Z",
+    "state": [
+      2
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 49,
+  "fields": {
+    "summary": "Домашнее задание",
+    "description": "",
+    "created_at": "2022-10-10T18:14:34.170Z",
+    "updated_at": "2022-10-10T18:14:34.170Z",
+    "state": [
+      2
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 50,
+  "fields": {
+    "summary": "Отправка уведомлений",
+    "description": "",
+    "created_at": "2022-10-10T18:14:40.337Z",
+    "updated_at": "2022-10-10T18:14:40.337Z",
+    "state": [
+      2
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 51,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "",
+    "created_at": "2022-10-10T18:14:49.637Z",
+    "updated_at": "2022-10-10T18:14:49.637Z",
+    "state": [
+      3
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 52,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "",
+    "created_at": "2022-10-10T18:14:56.710Z",
+    "updated_at": "2022-10-10T18:14:56.710Z",
+    "state": [
+      3
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 53,
+  "fields": {
+    "summary": "Интеграция госсервисов",
+    "description": "",
+    "created_at": "2022-10-10T18:15:08.249Z",
+    "updated_at": "2022-10-10T18:15:08.249Z",
+    "state": [
+      3
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 54,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "",
+    "created_at": "2022-10-10T18:22:02.779Z",
+    "updated_at": "2022-10-10T18:22:02.779Z",
+    "state": [
+      2
+    ],
+    "type": [
+      3
     ]
   }
 },
@@ -486,7 +966,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$390000$RVNKqpIDG9PfpjslAx0aJZ$zZz/ULD/vvLyy7qrhz7RGX43vZx1TDvX4w6pQvREna4=",
-    "last_login": "2022-10-07T09:40:11.298Z",
+    "last_login": "2022-10-10T16:48:28.275Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",

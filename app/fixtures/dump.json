@@ -576,6 +576,102 @@
   }
 },
 {
+  "model": "webapp.task",
+  "pk": 56,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "Bug #25",
+    "created_at": "2022-10-13T16:16:23.041Z",
+    "updated_at": "2022-10-13T16:16:23.041Z",
+    "state": [
+      1
+    ],
+    "type": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 57,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "Bug #34",
+    "created_at": "2022-10-13T16:16:34.020Z",
+    "updated_at": "2022-10-13T16:16:34.020Z",
+    "state": [
+      2
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 58,
+  "fields": {
+    "summary": "Bug fix",
+    "description": "Bug fix #2",
+    "created_at": "2022-10-13T16:16:49.227Z",
+    "updated_at": "2022-10-13T16:16:49.227Z",
+    "state": [
+      3
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 59,
+  "fields": {
+    "summary": "Bug Exception",
+    "description": "",
+    "created_at": "2022-10-13T16:16:55.620Z",
+    "updated_at": "2022-10-13T16:16:55.620Z",
+    "state": [
+      3
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 60,
+  "fields": {
+    "summary": "Bug fix",
+    "description": "",
+    "created_at": "2022-10-13T16:17:05.920Z",
+    "updated_at": "2022-10-13T16:17:05.920Z",
+    "state": [
+      2
+    ],
+    "type": [
+      3
+    ]
+  }
+},
+{
+  "model": "webapp.task",
+  "pk": 61,
+  "fields": {
+    "summary": "Bug fix",
+    "description": "Bugs Bunny",
+    "created_at": "2022-10-13T16:17:25.137Z",
+    "updated_at": "2022-10-13T16:17:25.137Z",
+    "state": [
+      1
+    ],
+    "type": [
+      1
+    ]
+  }
+},
+{
   "model": "webapp.state",
   "pk": 1,
   "fields": {

@@ -1,10 +1,13 @@
 import datetime
+from urllib.parse import urlencode
+
 from django.db.models import Q, F
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView, RedirectView, ListView
 
 from webapp.forms import TaskForm
+from webapp.forms.tasks import SearchForm
 from webapp.models import Task
 
 
@@ -25,20 +28,41 @@ class AddTaskView(TemplateView):
         return render(request, 'add_task.html', context={'form': form})
 
 
-class TasksView(TemplateView):
+class TasksView(ListView):
     template_name = 'tasks.html'
+    model = Task
+    context_object_name = 'tasks'
+    ordering = ('created_at',)
+    paginate_by = 10
+    paginate_orphans = 1
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tasks'] = Task.objects.filter(summary__exact=F('description'))
+    def get(self, request, *args, **kwargs):
+        self.form = self.get_search_form()
+        self.search_value = self.get_search_value()
+        return super().get(request, *args, **kwargs)
+
+    def get_search_form(self):
+        return SearchForm(self.request.GET)
+
+    def get_search_value(self):
+        if self.form.is_valid():
+            return self.form.cleaned_data.get('search')
+        return None
+
+    def get_queryset(self):
+        queryset = super().get_queryset().all()
+        if self.search_value:
+            query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value)
+            print(query.__dict__)
+            queryset = queryset.filter(query)
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['form'] = self.form
+        if self.search_value:
+            context['query'] = urlencode({'search': self.search_value})
         return context
-
-    def post(self, request, *args, **kwargs):
-        context = super().get_context_data(**kwargs)
-        tasks_to_delete = request.POST.getlist('task')
-        Task.objects.filter(pk__in=tasks_to_delete).delete()
-        context['tasks'] = Task.objects.all()
-        return self.render_to_response(context)
 
 
 class TaskView(TemplateView):

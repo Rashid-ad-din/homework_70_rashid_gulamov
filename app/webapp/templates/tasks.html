@@ -5,6 +5,7 @@
 {% block content %}
 
     <h3 class="pl-3 pb-2">Список задач</h3>
+    {% include 'partial/search.html' %}
 
     {% if tasks %}
         <form action="" method="post">
@@ -34,6 +35,13 @@
                 </tr>
             {% endfor %}
             <tr>
+                <td>
+                    {% if is_paginated %}
+                        {% include 'partial/pagination.html' %}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
                 <td class="col-2">
                     <input class="btn btn-danger ml-1 mt-3" type="submit" value="Удалить выбранные">
                     <a class="btn btn-primary ml-1 mt-3 mb-5" href="{% url 'add_task' %}">Добавить новую задачу</a>
@@ -42,7 +50,8 @@
             </tbody>
         </table>
     {% else %}
-        <p class="mt-5 ml-3 fw-bold">Список задач пуст</p>
+        <h3 class="text-center pl-3 pb-3">Задачи не найдены</h3>
     {% endif %}
+
 </form>
 {% endblock %}

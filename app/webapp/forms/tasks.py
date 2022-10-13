@@ -23,3 +23,10 @@ class TaskForm(forms.ModelForm):
                 'class': "form-control w-75"
             })
         }
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=100, required=False, label='Найти', widget=TextInput(attrs={
+        'class': 'mr-3',
+        'style': 'width: 350px;'}
+    ))

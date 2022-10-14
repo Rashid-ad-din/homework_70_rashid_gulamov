@@ -1,6 +1,9 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import BaseValidator
 from django.db import models
+from django.db.models import QuerySet
+
+from webapp.managers import TaskManager
 
 
 def unique(string):
@@ -27,7 +30,7 @@ class CustomValidator(BaseValidator):
 
 
 class Task(models.Model):
-    summary = models.CharField(verbose_name="Заголовок",
+    summary = models.CharField(verbose_name="Заголовок задачи",
                                null=False,
                                blank=False,
                                max_length=150,
@@ -50,10 +53,19 @@ class Task(models.Model):
     )
     created_at = models.DateTimeField(verbose_name='Дата изменения', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Дата удаления', auto_now=True)
+    project = models.ForeignKey(
+        to='webapp.Project',
+        verbose_name='Проект',
+        related_name='tasks',
+        on_delete=models.CASCADE,
+    )
+
+    objects = TaskManager()
 
     def __str__(self):
         return f'Заголовок: {self.summary}, Статус: {self.state.first()}, Тип: {self.type.first()}, Дата обновления:' \
                f' {self.updated_at}'
+
 
     class Meta:
         verbose_name = 'Задача'

@@ -1,1 +1,1 @@
-from .tasks import TaskForm
+from .tasks import TaskForm, SearchForm

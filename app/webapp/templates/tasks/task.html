@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Задача №{{ task.pk }} {% endblock %}
+
+{% block content %}
+
+    <h3 class="pl-3 pb-2">{{ task.summary }}</h3>
+
+    {% if task %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Заголовок</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Статус</th>
+                <th scope="col">Тип</th>
+                <th scope="col">Дата обновления</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="col-2 text-break">
+                    {{ task.summary }}
+                </td>
+
+                {% if not task.description %}
+                    <td>
+                        ---
+                    </td>
+                {% else %}
+                    <td class="col-4 text-break">
+                        {{ task.description | linebreaks }}
+                    </td>
+                {% endif %}
+
+                <td class="col-2">{% for state in task.state.all %}{{ state.name }}<br>{% endfor %}</td>
+                <td class="col-2">{% for type in task.type.all %}{{ type.name }}<br>{% endfor %}</td>
+                <td class="col-2">{{ task.updated_at }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <a class="btn btn-danger mt-2 ml-3 mb-2" href="{% url 'delete_task' task.pk %}">Удалить</a>
+        <br>
+        <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'edit_task' task.pk %}">Редактировать задачу</a>
+        <br>
+    {% else %}
+        <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
+    {% endif %}
+{% endblock %}
+
+{% block bottom_href %}
+
+{% endblock %}

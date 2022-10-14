@@ -1,8 +1,8 @@
 <div class="pagination">
     <span class="step-links">
-        <a href="?{% if query %}{{ query }}{% endif %}&page=1" class="btn btn-primary mb-2">&laquo; В начало</a>
+        <a href="?{% if query %}{{ query }}{% endif %}&page=1" class="btn btn-warning mb-2">&laquo; В начало</a>
         {% if page_obj.has_previous %}
-            <a href="?{% if query %}{{ query }}{% endif %}&page={{ page_obj.previous_page_number }}" class="btn btn-primary mb-2">Назад</a>
+            <a href="?{% if query %}{{ query }}{% endif %}&page={{ page_obj.previous_page_number }}" class="btn btn-warning mb-2">Назад</a>
         {% else %}
             <span class="page-disabled">Назад</span>
         {% endif %}
@@ -13,10 +13,10 @@
             </label>
         </form>
         {% if page_obj.has_next %}
-            <a href="?{% if query %}{{ query }}{% endif %}&page={{ page_obj.next_page_number }}" class="btn btn-primary">Далее</a>
+            <a href="?{% if query %}{{ query }}{% endif %}&page={{ page_obj.next_page_number }}" class="btn btn-warning">Далее</a>
         {% else %}
             <span class="page-disabled">Далее</span>
         {% endif %}
-        <a href="?{% if query %}{{ query }}{% endif %}&page={{ page_obj.paginator.num_pages }}" class="btn btn-primary">В конец &raquo;</a>
+        <a href="?{% if query %}{{ query }}{% endif %}&page={{ page_obj.paginator.num_pages }}" class="btn btn-warning">В конец &raquo;</a>
     </span>
 </div>

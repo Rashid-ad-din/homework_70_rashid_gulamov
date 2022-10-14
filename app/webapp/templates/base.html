@@ -16,7 +16,10 @@
     <div>
         <ul class="d-flex list-unstyled">
             <li class="nav-item mt-2">
-                 <a class="nav-link text-warning" href="{% url 'add_task' %}">Добавить новую заметку</a>
+                <a class="nav-link text-warning" href="{% url 'show_projects' %}">Проекты</a>
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link text-warning" href="{% url 'show_tasks' %}">Список задач</a>
             </li>
             {% block menu %}{% endblock %}
         </ul>

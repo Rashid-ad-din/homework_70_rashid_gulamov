@@ -1,0 +1,25 @@
+<thead>
+<tr>
+    <th scope="col">Задача</th>
+    <th scope="col">Статус</th>
+    <th scope="col">Тип</th>
+    <th scope="col">Дата обновления</th>
+    <th scope="col"></th>
+</tr>
+</thead>
+<tbody>
+{% for task in tasks %}
+    <tr>
+        <td class="col-4 text-break">
+            <a class="list-unstyled text-dark" href="{% url 'show_task' task.pk %}">
+                {{ task.summary }}
+            </a>
+        </td>
+        <td class="col-2">{% for state in task.state.all %}{{ state.name }}<br>{% endfor %}</td>
+        <td class="col-2">{% for type in task.type.all %}{{ type.name }}<br>{% endfor %}</td>
+        <td class="col-3">{{ task.updated_at }}</td>
+        <td class="col-1"><a class="btn btn-danger" href="{% url 'delete_task' task.pk %}">Удалить</a></td>
+    </tr>
+{% endfor %}
+
+</tbody>

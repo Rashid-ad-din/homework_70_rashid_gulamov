@@ -43,7 +43,7 @@
 
         {% if project.tasks %}
             <table class="table table-striped">
-                {% include 'partial/partial_tasks.html' with tasks=project.tasks.all %}
+                {% include 'partial/partial_tasks.html' with tasks=project.tasks.without_deleted %}
             </table>
         {% endif %}
 

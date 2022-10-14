@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import BaseValidator
 from django.db import models
-from django.db.models import QuerySet
+from django.utils import timezone
 
 from webapp.managers import TaskManager
 
@@ -59,6 +59,8 @@ class Task(models.Model):
         related_name='tasks',
         on_delete=models.CASCADE,
     )
+    is_deleted = models.BooleanField(verbose_name='Удалено', default=False, null=False)
+    deleted_at = models.DateTimeField(verbose_name='Дата удаления', null=True, default=None)
 
     objects = TaskManager()
 
@@ -66,7 +68,11 @@ class Task(models.Model):
         return f'Заголовок: {self.summary}, Статус: {self.state.first()}, Тип: {self.type.first()}, Дата обновления:' \
                f' {self.updated_at}'
 
-
     class Meta:
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
+
+    def delete(self, using=None, keep_parents=False):
+        self.deleted_at = timezone.now()
+        self.is_deleted = True
+        self.save()

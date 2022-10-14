@@ -1,6 +1,7 @@
 from urllib.parse import urlencode
 
 from django.db.models import Q
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -31,7 +32,7 @@ class TasksView(ListView):
     template_name = 'tasks/tasks.html'
     model = Task
     context_object_name = 'tasks'
-    # ordering = ('-created_at',)
+    queryset = Task.objects.without_deleted()
     paginate_by = 10
     paginate_orphans = 1
 
@@ -67,6 +68,14 @@ class TasksView(ListView):
 class TaskView(DetailView):
     template_name = 'tasks/task.html'
     model = Task
+
+    def get_object(self, **kwargs):
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        task = get_object_or_404(Task, pk=pk)
+
+        if task.is_deleted:
+            raise Http404('Task not found/deleted')
+        return task
 
 
 class TaskUpdateView(SuccessDetailUrlMixin, UpdateView):

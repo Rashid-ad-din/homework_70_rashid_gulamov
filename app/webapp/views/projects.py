@@ -2,7 +2,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from webapp.forms.projects import ProjectForm
-from webapp.models import Project, Task
+from webapp.models import Project
 
 
 class SuccessDetailUrlMixin:

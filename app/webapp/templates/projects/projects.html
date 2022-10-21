@@ -27,15 +27,23 @@
                     </td>
                     <td class="col-2">{{ project.date_start }}</td>
                     <td class="col-2">{{ project.date_end }}</td>
-                    <td class="col-1"><a class="btn btn-danger" href="{% url 'delete_project' project.pk %}">Удалить</a>
+                    {% if user.is_authenticated %}
+                    <td class="col-1">
+                        <a class="btn btn-danger" href="{% url 'delete_project' project.pk %}">Удалить</a>
                     </td>
+                    {% else %}
+                    <td class="col-1"></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
-            <tr>
-                <td class="col-2">
-                    <a class="btn btn-primary ml-1 mt-3 mb-5" href="{% url 'add_project' %}">Добавить новый проект</a>
-                </td>
-            </tr>
+            {% if user.is_authenticated %}
+                <tr>
+                    <td class="col-2">
+                        <a class="btn btn-primary ml-1 mt-3 mb-5" href="{% url 'add_project' %}">Добавить новый
+                            проект</a>
+                    </td>
+                </tr>
+            {% endif %}
             </tbody>
         </table>
     {% else %}

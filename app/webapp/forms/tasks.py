@@ -6,6 +6,9 @@ from webapp.models import Task
 
 
 class TaskForm(forms.ModelForm):
+    error_css_class = 'error'
+    label_css_class = 'label'
+
     class Meta:
         model = Task
         fields = ('summary', 'description', 'state', 'type')

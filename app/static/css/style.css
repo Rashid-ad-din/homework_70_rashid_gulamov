@@ -1,9 +1,17 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: Arial, sans-serif;
+}
+
+.error label {
+    color: #8f0000;
+}
+
+.errorlist {
+    color: #8f0000;
 }

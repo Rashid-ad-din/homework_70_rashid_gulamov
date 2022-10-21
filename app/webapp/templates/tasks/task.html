@@ -39,10 +39,12 @@
             </tr>
             </tbody>
         </table>
+        {% if user.is_authenticated %}
         <a class="btn btn-danger mt-2 ml-3 mb-2" href="{% url 'delete_task' task.pk %}">Удалить</a>
         <br>
         <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'edit_task' task.pk %}">Редактировать задачу</a>
         <br>
+        {% endif %}
     {% else %}
         <p class="mt-5 ml-3 fw-bold">Запись не найдена</p>
     {% endif %}

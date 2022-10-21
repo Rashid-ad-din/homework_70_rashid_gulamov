@@ -18,7 +18,13 @@
         <td class="col-2">{% for state in task.state.all %}{{ state.name }}<br>{% endfor %}</td>
         <td class="col-2">{% for type in task.type.all %}{{ type.name }}<br>{% endfor %}</td>
         <td class="col-3">{{ task.updated_at }}</td>
-        <td class="col-1"><a class="btn btn-danger" href="{% url 'delete_task' task.pk %}">Удалить</a></td>
+        {% if user.is_authenticated %}
+            <td class="col-1">
+                <a class="btn btn-danger" href="{% url 'delete_task' task.pk %}">Удалить</a>
+            </td>
+        {% else %}
+            <td class="col-1"></td>
+        {% endif %}
     </tr>
 {% endfor %}
 

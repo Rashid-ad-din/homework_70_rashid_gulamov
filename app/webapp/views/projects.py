@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
@@ -10,7 +11,7 @@ class SuccessDetailUrlMixin:
         return reverse('show_project', kwargs={'pk': self.object.pk})
 
 
-class ProjectAddView(SuccessDetailUrlMixin, CreateView):
+class ProjectAddView(SuccessDetailUrlMixin, LoginRequiredMixin, CreateView):
     template_name = 'projects/add_project.html'
     form_class = ProjectForm
     model = Project
@@ -27,14 +28,14 @@ class ProjectView(DetailView):
     model = Project
 
 
-class ProjectUpdateView(SuccessDetailUrlMixin, UpdateView):
+class ProjectUpdateView(SuccessDetailUrlMixin, LoginRequiredMixin, UpdateView):
     template_name = 'projects/edit_project.html'
     form_class = ProjectForm
     model = Project
     context_object_name = 'project'
 
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(DeleteView, LoginRequiredMixin):
     template_name = 'projects/project_delete.html'
     model = Project
     success_url = reverse_lazy('show_tasks')

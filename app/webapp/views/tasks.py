@@ -1,5 +1,6 @@
 from urllib.parse import urlencode
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
@@ -16,7 +17,7 @@ class SuccessDetailUrlMixin:
         return reverse('show_task', kwargs={'pk': self.object.pk})
 
 
-class AddTaskView(SuccessDetailUrlMixin, CreateView):
+class AddTaskView(SuccessDetailUrlMixin, LoginRequiredMixin, CreateView):
     template_name = 'tasks/add_task.html'
     form_class = TaskForm
     model = Task
@@ -78,13 +79,13 @@ class TaskView(DetailView):
         return task
 
 
-class TaskUpdateView(SuccessDetailUrlMixin, UpdateView):
+class TaskUpdateView(SuccessDetailUrlMixin, LoginRequiredMixin, UpdateView):
     template_name = 'tasks/edit_task.html'
     form_class = TaskForm
     model = Task
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(DeleteView, LoginRequiredMixin):
     template_name = 'tasks/delete.html'
     model = Task
     success_url = reverse_lazy('show_projects')

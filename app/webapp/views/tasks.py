@@ -48,6 +48,7 @@ class TasksView(ListView):
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()
         self.search_value = self.get_search_value()
+        self.dev = self.request.user.username
         return super().get(request, *args, **kwargs)
 
     def get_search_form(self):
@@ -70,6 +71,7 @@ class TasksView(ListView):
         context['form'] = self.form
         if self.search_value:
             context['query'] = urlencode({'search': self.search_value})
+        # context['devs'] = self.devs
         return context
 
 

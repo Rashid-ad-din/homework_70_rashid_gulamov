@@ -44,7 +44,6 @@ class ProjectView(DetailView):
         devss = project.user.all()
         for dev in devss:
             devs.append(dev.username)
-        print(devs)
         context = {'project': project, 'devs': devs}
 
         return self.render_to_response(context)

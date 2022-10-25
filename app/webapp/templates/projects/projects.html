@@ -27,7 +27,7 @@
                     </td>
                     <td class="col-2">{{ project.date_start }}</td>
                     <td class="col-2">{{ project.date_end }}</td>
-                    {% if user.is_authenticated %}
+                    {% if user.is_authenticated and user in project.user.all %}
                         <td class="col-1">
                             <a class="btn btn-danger" href="{% url 'delete_project' project.pk %}">Удалить</a>
                         </td>

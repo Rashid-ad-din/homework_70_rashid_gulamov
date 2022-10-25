@@ -1,6 +1,6 @@
 from urllib.parse import urlencode
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404
@@ -12,16 +12,24 @@ from webapp.forms import TaskForm
 from webapp.models import Task, Project
 
 
+class GroupPermission(UserPassesTestMixin):
+    groups = []
+
+    def test_func(self):
+        return self.request.user.groups.filter(name__in=self.groups).exists()
+
+
 class SuccessDetailUrlMixin:
     def get_success_url(self):
         return reverse('show_task', kwargs={'pk': self.object.pk})
 
 
-class AddTaskView(SuccessDetailUrlMixin, LoginRequiredMixin, CreateView):
+class AddTaskView(GroupPermission, SuccessDetailUrlMixin, LoginRequiredMixin, CreateView):
     template_name = 'tasks/add_task.html'
     form_class = TaskForm
     model = Task
     extra_context = ()
+    groups = ['admin', 'Project Manager', 'Team Lead', 'Developer']
 
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs.get('pk'))
@@ -54,7 +62,6 @@ class TasksView(ListView):
         queryset = super().get_queryset().all()
         if self.search_value:
             query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value)
-            print(query.__dict__)
             queryset = queryset.filter(query)
         return queryset
 
@@ -79,13 +86,16 @@ class TaskView(DetailView):
         return task
 
 
-class TaskUpdateView(SuccessDetailUrlMixin, LoginRequiredMixin, UpdateView):
+class TaskUpdateView(GroupPermission, SuccessDetailUrlMixin, LoginRequiredMixin, UpdateView):
     template_name = 'tasks/edit_task.html'
     form_class = TaskForm
     model = Task
+    groups = ['admin', 'Project Manager', 'Team Lead', 'Developer']
 
 
-class TaskDeleteView(DeleteView, LoginRequiredMixin):
+class TaskDeleteView(GroupPermission, DeleteView, LoginRequiredMixin):
     template_name = 'tasks/delete.html'
     model = Task
     success_url = reverse_lazy('show_projects')
+    groups = ['admin', 'Project Manager', 'Team Lead', 'Developer']
+

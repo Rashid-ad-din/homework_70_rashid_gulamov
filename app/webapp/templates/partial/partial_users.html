@@ -1,0 +1,47 @@
+<h3 class="pl-3 pb-2 pt-3">Пользователи</h3>
+
+{% if not project.user.exists %}
+
+    <h5 class="pl-3 pb-2 pt-3">Нет пользователей проекта</h5>
+
+{% else %}
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Имя</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Логин</th>
+            <th scope="col">Почта</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for userr in project.user.all %}
+            <tr>
+                <td class="col-3 text-break">
+                    {{ userr.first_name }}
+                </td>
+
+                {% if not userr.last_name %}
+                    <td>
+                        ---
+                    </td>
+                {% else %}
+                    <td class="col-4 text-break">
+                        {{ userr.last_name }}
+                    </td>
+                {% endif %}
+
+                <td class="col-2">{{ user.username }}</td>
+                <td class="col-2">{{ user.email }}</td>
+                {% if user.is_authenticated %}
+                    <td class="col-1"><a class="btn btn-danger" href="{% url 'user_delete' project.pk userr.pk %}">
+                        Удалить</a>
+                    </td>
+                {% else %}
+                    <td class="col-1"></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

@@ -1,6 +1,8 @@
 from django import forms
+from django.conf import settings
 from django.forms import Textarea, TextInput
-from django.forms.widgets import DateInput
+from django.forms.widgets import Select, SelectMultiple
+from django.contrib.auth.models import User
 
 from webapp.models import Project
 
@@ -25,4 +27,13 @@ class ProjectForm(forms.ModelForm):
                 'class': "form-control w-75",
                 'type': 'date'
             })
+        }
+
+
+class ProjectUsersForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ('user',)
+        widgets = {
+            'user': SelectMultiple(choices=User.objects.all())
         }

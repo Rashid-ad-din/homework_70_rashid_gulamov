@@ -4,60 +4,30 @@
 
 {% block content %}
 
-    <h3 class="pl-3 pb-2">{{ project.title }}</h3>
-
     {% if project %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Проект</th>
-                <th scope="col">Описание</th>
-                <th scope="col">Дата начала</th>
-                <th scope="col">Дата окончания</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td class="col-3 text-break">
-                    {{ project.title }}
-                </td>
 
-                {% if not project.description %}
-                    <td>
-                        ---
-                    </td>
-                {% else %}
-                    <td class="col-4 text-break">
-                        {{ project.description | linebreaks }}
-                    </td>
-                {% endif %}
+        {% include 'partial/project_presentation.html' %}
 
-                <td class="col-2">{{ project.date_start }}</td>
-                <td class="col-2">{{ project.date_end }}</td>
-                {% if user.is_authenticated %}
-                    <td class="col-1"><a class="btn btn-danger" href="{% url 'delete_project' project.pk %}">
-                        Удалить</a>
-                    </td>
-                {% else %}
-                    <td class="col-1"></td>
-                {% endif %}
-            </tr>
-            </tbody>
-        </table>
+        {% include 'partial/partial_users.html' %}
 
         {% if project.tasks %}
+            <h3 class="pl-3 pb-2 pt-3">Задачи</h3>
             <table class="table table-striped">
                 {% include 'partial/partial_tasks.html' with tasks=project.tasks.without_deleted %}
             </table>
         {% endif %}
+
         {% if user.is_authenticated %}
-        <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'edit_project' project.pk %}">Редактировать проект</a>
-        <br>
-        <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'add_project_task' project.pk %}">Добавить задачу к
-            проекту</a>
+            <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'edit_project' project.pk %}">Редактировать
+                проект</a>
+            <br>
+            <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'add_project_task' project.pk %}">Добавить задачу к
+                проекту</a>
+            <br>
+            <a class="btn btn-primary mt-2 ml-3 mb-3" href="{% url 'add_user_to_project' project.pk %}">Добавить
+                пользователя в проект</a>
         {% endif %}
-    {% else %}
+        {% else %}
         <p class="mt-5 ml-3 fw-bold">Проект не найден</p>
     {% endif %}
 

@@ -885,7 +885,7 @@
   "pk": 11,
   "fields": {
     "password": "pbkdf2_sha256$390000$iqss8TXJv3Xf2hEfoBNiVs$0N/ddhDuKzWN9hd6wToPhVjDtPntjRlm8jEQd0te/lE=",
-    "last_login": "2022-10-25T12:55:19.472Z",
+    "last_login": "2022-11-21T19:36:46.468Z",
     "is_superuser": false,
     "username": "manager",
     "first_name": "manager",
@@ -925,7 +925,7 @@
   "pk": 13,
   "fields": {
     "password": "pbkdf2_sha256$390000$5f40aqrcesVXwBrHw3LgOp$c7Qd6XqZ9ZhS7SjmO3pYKdlMYnPwsrENazHNcZ68cAw=",
-    "last_login": "2022-10-25T12:58:53.401Z",
+    "last_login": "2022-11-21T18:48:36.854Z",
     "is_superuser": false,
     "username": "dev",
     "first_name": "dev",
@@ -1090,6 +1090,14 @@
   "fields": {
     "session_data": ".eJxVjMEOwiAQRP-FsyGFogsevfcbCCy7UjWQlPZk_Hdp0oMeZ96beQsftjX7rdHi5ySuQonTbxcDPqnsID1CuVeJtazLHOWuyIM2OdVEr9vh_h3k0HJf29EAaAes2aKyrmdUKhgelAYgFwcaExAjBwaylo2G0cWLcajP3RSfL8XoN2Q:1oj2Um:Ofj5OFiqEKEj8lpq8ScIBYp0e01Dd3p0_ueBnkcqqTE",
     "expire_date": "2022-10-27T17:59:48.202Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yfdi2fz6xv9f9i4oq22q0bn4v6vprwn0",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSE8him4dO83NMAMUjUlKe3K-O_apAvd3nPOfYkxbmsdt87LOJE4C63F6XdMMT943gnd43xrMrd5XaYkd0UetMtrI35eDvfvoMZev7UjQ1qFzMEW8gMyBCZIOBiFAMWhNh5tAUsJVXI6ggIVWQf0hYMz4v0B9ck3UA:1oxCb0:N4TBGDo_IM7Ic9PykX7rSepYFK-iVlMTZCYsL5dXc4g",
+    "expire_date": "2022-12-05T19:36:46.474Z"
   }
 },
 {
@@ -1821,14 +1829,17 @@
     "summary": "Bug fix",
     "description": "",
     "created_at": "2022-10-13T16:17:05.920Z",
-    "updated_at": "2022-10-13T16:17:05.920Z",
+    "updated_at": "2022-11-21T19:36:59.769Z",
     "project": 1,
     "is_deleted": false,
     "deleted_at": null,
     "state": [
-      2
+      2,
+      3
     ],
     "type": [
+      1,
+      2,
       3
     ]
   }
@@ -1840,7 +1851,7 @@
     "summary": "Bug Exception",
     "description": "",
     "created_at": "2022-10-14T06:14:24.192Z",
-    "updated_at": "2022-10-14T09:53:10.765Z",
+    "updated_at": "2022-11-21T19:35:03.369Z",
     "project": 6,
     "is_deleted": false,
     "deleted_at": "2022-10-14T09:53:10.765Z",
@@ -1848,7 +1859,9 @@
       2
     ],
     "type": [
-      2
+      1,
+      2,
+      3
     ]
   }
 },

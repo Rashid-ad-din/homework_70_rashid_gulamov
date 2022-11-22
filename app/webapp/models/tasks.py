@@ -57,7 +57,8 @@ class Task(models.Model):
         to='webapp.Project',
         verbose_name='Проект',
         related_name='tasks',
-        on_delete=models.CASCADE,
+        null=True,
+        on_delete=models.SET_NULL,
     )
     is_deleted = models.BooleanField(verbose_name='Удалено', default=False, null=False)
     deleted_at = models.DateTimeField(verbose_name='Дата удаления', null=True, default=None)
